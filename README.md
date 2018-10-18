@@ -239,24 +239,26 @@ Note: the `--force` flag is necessary to force husky to work properly with yarn.
 
 A Git "hook" is a way to "hook" into a git command and run some code either before or after the command runs. In this instance, we're going to hook into the `git commit` command and a) run `prettier-standard` to clean up our code, then b) run `git add` to stage any changes so they'll be included in the commit. Then we'll let the `git commit` go forward.
 
-We do this in our `package.json` file, which is where we configure and control our application. So open that file in your code editor and add the following section:
+We do this in our `package.json` file, which is where we configure and control our application. So open that file in your code editor and add the following section below `"scripts"`:
 
 ```json
-  ...
   "scripts": {
-    ...
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "format": "prettier-standard 'src/**/*js'",
+    "eject": "react-scripts eject"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-  ...
 ```
 
 This tells `husky` to listen for the `git commit` command and run `lint-staged` _before_ ("pre") the commit.
 
-Now we'll configure `lint-staged` to tell it what commands to run before each commit. In the same `package.json` file, add this below the husky section:
+Now we'll configure `lint-staged` to tell it what commands to run before each commit. In the same `package.json` file, add this below `"husky"`:
 
 ```json
   "scripts": {
@@ -278,7 +280,7 @@ Now we'll configure `lint-staged` to tell it what commands to run before each co
         "git add"
       ]
     }
-  }
+  },
 ```
 
 This tells `lint-staged` to run the following commands on all files below the `src` folder: First, `prettier-standard`, which does the same thing that our `yarn format` command did, namely, cleans up all the code in the `src` folder.
