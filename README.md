@@ -239,22 +239,24 @@ Note: the `--force` flag is necessary to force husky to work properly with yarn.
 
 A Git "hook" is a way to "hook" into a git command and run some code either before or after the command runs. In this instance, we're going to hook into the `git commit` command and a) run `prettier-standard` to clean up our code, then b) run `git add` to stage any changes so they'll be included in the commit. Then we'll let the `git commit` go forward.
 
-We do this in our `package.json` file, which is where we configure and control our application. So open that file in your code editor and add the "precommit" line:
+We do this in our `package.json` file, which is where we configure and control our application. So open that file in your code editor and add the following section:
 
 ```json
+  ...
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "format": "prettier-standard 'src/**/*js'",
-    "precommit": "lint-staged",
-    "eject": "react-scripts eject"
+    ...
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  ...
 ```
 
 This tells `husky` to listen for the `git commit` command and run `lint-staged` _before_ ("pre") the commit.
 
-Now we'll configure `lint-staged` to tell it what commands to run before each commit. In the same `package.json` file, add this below the scripts:
+Now we'll configure `lint-staged` to tell it what commands to run before each commit. In the same `package.json` file, add this below the husky section:
 
 ```json
   "scripts": {
@@ -262,8 +264,12 @@ Now we'll configure `lint-staged` to tell it what commands to run before each co
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-standard 'src/**/*js'",
-    "precommit": "lint-staged",
     "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "linters": {
@@ -300,8 +306,12 @@ If anything is not working, check the code in this repository (particularly the 
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-standard 'src/**/*js'",
-    "precommit": "lint-staged",
     "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "linters": {
@@ -496,25 +506,30 @@ Your final `package.json` file should look like this (version numbers may vary):
   "private": true,
   "dependencies": {
     "ramda": "^0.25.0",
-    "ramda-adjunct": "^2.6.0",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "ramda-adjunct": "^2.10.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
-    "react-scripts": "1.1.4",
-    "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2",
-    "redux-observable": "^0.18.0",
-    "rxjs": "^5.5.10",
-    "styled-components": "^3.2.5"
+    "react-router": "^4.3.1",
+    "react-scripts": "^2.0.5",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-observable": "^1.0.0",
+    "rxjs": "^6.3.3",
+    "rxjs-compat": "^6.3.3",
+    "styled-components": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "format": "prettier-standard 'src/**/*js'",
-    "precommit": "lint-staged",
     "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "linters": {
@@ -525,17 +540,23 @@ Your final `package.json` file should look like this (version numbers may vary):
     }
   },
   "devDependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "enzyme-to-json": "^3.3.3",
-    "husky": "^0.14.3",
-    "jest-enzyme": "^6.0.0",
-    "jest-styled-components": "^5.0.1",
-    "lint-staged": "^7.0.4",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
+    "husky": "^1.1.2",
+    "jest-enzyme": "^7.0.0",
+    "jest-styled-components": "^6.2.1",
+    "lint-staged": "^7.3.0",
     "prettier-standard": "^8.0.1",
-    "react-test-renderer": "^16.3.1",
-    "redux-mock-store": "^1.5.1"
-  }
+    "react-test-renderer": "^16.5.2",
+    "redux-mock-store": "^1.5.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
 ```
 
