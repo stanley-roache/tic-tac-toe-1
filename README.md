@@ -291,9 +291,9 @@ If anything is not working, check the code in this repository (particularly the 
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-scripts": "1.1.4"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "^2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -312,10 +312,16 @@ If anything is not working, check the code in this repository (particularly the 
     }
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.4",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
     "prettier-standard": "^8.0.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
 ```
 
