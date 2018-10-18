@@ -1,3 +1,13 @@
+# Experimenting updating tic-tac-toe to the latest version
+
+A learning exercise but maybe also useful
+
+At the moment I have updated to latest versions for all dependencies in branches 00, 01 and 06 (apart from updating husky on 06),
+the main problem at the moment is updating `styled-components` to latest makes the snapshots super ugly to read through, everything still works but for understanding the testing it might be better to stick with the old version
+
+
+
+
 # Building a Tic-Tac-Toe application with React
 
 This is a tutorial for building a Tic-Tac-Toe game with [React](https://reactjs.org/), [Redux](https://redux.js.org/), [`redux-observable`](https://redux-observable.js.org/), [Rx.js](https://github.com/ReactiveX/rxjs), and more. We'll start simply, and continue building on the app, step by step, until we've created something quite powerful. Note: this is still a work in progress. [YMMV](https://en.wiktionary.org/wiki/your_mileage_may_vary#English).
