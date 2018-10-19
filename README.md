@@ -5,8 +5,11 @@ A learning exercise but maybe also useful
 At the moment I have updated to latest versions for all dependencies in branches 00, 01 and 06 (apart from updating husky on 06),
 the main problem at the moment is updating `styled-components` to latest makes the snapshots super ugly to read through, everything still works but for understanding the testing it might be better to stick with the old version
 
+-----------------------------------------------------------------
 
+## Original README below
 
+-----------------------------------------------------------------
 
 # Building a Tic-Tac-Toe application with React
 
